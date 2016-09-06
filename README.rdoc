@@ -1,3 +1,17 @@
-This is the repository for the first alpha-blog app of the Complete Ruby on Rails Developer Course
+Cash-expenses management System -
 
---modified--
+User should be able to keep track of daily expenses incurred under various account heads.
+
+To achieve this -
+
+    Users should be able to add/ edit account names in the system.
+
+    Under each account name they will be able to enter transactions which will contain the expense amount along with a short description of the expense.
+
+    Transactions need to be associated with the account names.
+
+    The account names should also be  unique.
+
+    User should be able to list, view, edit and delete transactions.
+
+    User should also be able to generate and view monthly report of all the expenses incurred in a particular month

@@ -8,16 +8,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "Home", root_path, class: "navbar-brand", id: "logo" %>
+      <%= link_to "Cash System", root_path, class: "navbar-brand", id: "logo" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
+
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <% if logged_in? %>
       <ul class="nav navbar-nav">
-        <li><%= link_to "Transaction", articles_path %></li>
-        <li><%= link_to "All User's Transaction", users_path %></li>
+        <li><%= link_to "Transaction", user_articles_path(current_user) %></li>
+        <li><%= link_to "All User's Transaction", users_path%></li>
         <% if logged_in? %>  
-          <li><%= link_to "Make New Transaction", new_article_path %></li>
+          <li><%= link_to "Make New Transaction", new_user_article_path(current_user) %></li>
         <% end %>
         
       </ul>
@@ -28,7 +30,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <% if logged_in? %>
+        
           <li><%= link_to 'Log out', logout_path, method: :delete %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Profile <%= "Admin" if current_user.admin? %><span class="caret"></span></a>
@@ -39,7 +41,10 @@
               
             </ul>
           </li>
-        <% else %>
+        
+      </ul>
+      <% else %>
+      <ul class="nav navbar-nav navbar-right">
           <li><%= link_to 'Log in', login_path %></li>
           <li><%= link_to 'Sign up', signup_path %></li>
         <% end %>
