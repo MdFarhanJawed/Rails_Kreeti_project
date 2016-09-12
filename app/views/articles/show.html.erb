@@ -18,8 +18,9 @@
   <% end %>
   <h4 class="center description"><strong>Description:</strong></h4>
   <hr>
-  <p style="display:inline-block;float:left;color:blue">Name Of The Product:&nbsp</p><%= simple_format(@article.description) %><br/>
-  <p style="display:inline-block;float:left;color:blue">Price Of The Article:&nbsp</p><%= simple_format(@article.price) %>
+  <p style="display:inline-block;float:left;color:blue">Title:&nbsp</p><%= @article.description %><br/>
+  <p style="display:inline-block;float:left;color:blue">Price:&nbsp</p><%= @article.price %>
+  
   <% if @article.categories.any? %>
     <p>Categories: <%= render @article.categories %></p>
   <% end %>

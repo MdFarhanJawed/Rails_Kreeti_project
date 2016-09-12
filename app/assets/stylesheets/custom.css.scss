@@ -1,3 +1,21 @@
+table, td, th {
+    border: 1px solid grey;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align:center;
+    vertical-align: bottom;
+    padding: 15px;
+}
+
+
+th {
+    height: 90px;
+}
+
+
 $navbar-default-bg: black;
 
 @import "bootstrap-sprockets";

@@ -1,0 +1,13 @@
+<%= search_form_for @search, url: root_path, method: :post do |f| %>
+          <div class="field">
+            <%= f.label :cruise_ship_name_or_cruise_ship_company_or_destination_identifier_cont, "Cruise Ship Name" %>
+            <%= f.text_field :cruise_ship_name_or_cruise_ship_company_or_destination_identifier_cont %>
+          </div>
+          <div class="field">
+            <%= f.label :departure_date_gteq, "Departure Date Between" %>
+            <%= f.search_field :departure_date_gteq, "data-provide" => "datepicker" %>
+            <%= f.label :return_date_lteq, "and" %>
+            <%= f.search_field :return_date_lteq, "data-provide" => "datepicker" %>
+          </div>
+          <div class="actions"><%= f.submit "Search" %></div>
+      <% end %>
