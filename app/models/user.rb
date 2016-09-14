@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :transactions, dependent: :destroy
+  has_many :accounts
   before_save { self.email = email.downcase }
   validates :username, presence: true, 
             uniqueness: { case_sensitive: false }, 

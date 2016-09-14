@@ -1,0 +1,33 @@
+
+
+
+
+<% obj.each do |transaction| %>
+
+<table>
+ <tr>
+   
+    <td>
+          <%= link_to transaction.title, transaction_path(transaction) %>
+     </td>  
+     <td> <%= transaction.description %></td>
+     <td> <%= transaction.price %></td>
+     <td>     Created by: <%= transaction.user.username if transaction.user%>,
+                      <%= time_ago_in_words(transaction.created_at) %> ago,
+                last updated: <%= time_ago_in_words(transaction.updated_at) %> ago</td>
+         
+       <td>       
+        <% if logged_in? && (current_user == transaction.user || current_user.admin?) %>
+          
+             <%= link_to "Edit this Transaction", edit_transaction_path(transaction), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Delete this Transaction", transaction_path(transaction), method: :delete, 
+                                          data: { confirm: "Are you sure you want to delete the Transaction?"}, 
+                                          class: "btn btn-xs btn-danger" %> 
+
+          <% end %>
+         </td>
+          
+        
+</tr>
+</table>      
+<% end %>
