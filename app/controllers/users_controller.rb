@@ -27,20 +27,20 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = "Your account was updated successfully"
-      redirect_to articles_path
+      redirect_to transactions_path
     else
       render 'edit'
     end
   end
   
   def show
-    @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
+    @user_transactions = @user.transactions.paginate(page: params[:page], per_page: 5)
   end
   
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:danger] = "User and all articles created by user have been deleted"
+    flash[:danger] = "User and all transactions created by user have been deleted"
     redirect_to users_path
   end
   

@@ -6,9 +6,9 @@
 </div>
 <h4 align="center"><%= @user.username %>'s Transaction</h4>
 <div class="center">
-  <%= will_paginate @user_articles %>
+  <%= will_paginate @user_transactions %>
 </div>
-<%= render 'articles/article', obj: @user_articles %>
+<%= render 'transactions/transaction', obj: @user_transactions %>
 <div class="center">
-  <%= will_paginate @user_articles %>
+  <%= will_paginate @user_transactions %>
 </div>
