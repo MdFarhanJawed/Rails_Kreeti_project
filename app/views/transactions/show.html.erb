@@ -1,6 +1,6 @@
 <h2 align="center">Title: <%= @transaction.title %></h2>
 <div class="well col-xs-8 col-xs-offset-2">
-  <% if @account.user %>
+  <% if @transaction.user %>
     <ul class="listing">
       <div class="row center">
         <div class="col-md-4 col-md-offset-4">
@@ -20,6 +20,7 @@
   <hr>
   <p style="display:inline-block;float:left;color:blue">Title:&nbsp</p><%= @transaction.description %><br/>
   <p style="display:inline-block;float:left;color:blue">Price:&nbsp</p><%= @transaction.price %>
+  <p style="padding-left:20px"><%= image_tag @transaction.image.url(:medium)%></p>
   
   
   <div class="transaction-actions">

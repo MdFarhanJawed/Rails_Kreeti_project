@@ -1,33 +1,91 @@
 
-
-
-
-<% obj.each do |transaction| %>
-
-<table>
- <tr>
-   
-    <td>
-          <%= link_to transaction.title, transaction_path(transaction) %>
-     </td>  
-     <td> <%= transaction.description %></td>
-     <td> <%= transaction.price %></td>
-     <td>     Created by: <%= transaction.user.username if transaction.user%>,
-                      <%= time_ago_in_words(transaction.created_at) %> ago,
-                last updated: <%= time_ago_in_words(transaction.updated_at) %> ago</td>
-         
-       <td>       
+ <table>
+  <thead>
+    <tr>
+      <th>
+        <div>Transaction Title</div>
+      </th>
+       <th>
+        <div>Transaction Expenses</div>
+      </th>
+      <th>
+        <div>Transaction Description</div>
+      </th>
+      <th>
+        <div>Created BY</div>
+      </th>
+      <th>
+        <div>Edit and Delete</div>
+      </th>
+      <th>
+        <div>Download Image</div>
+      </th>
+      <th>
+        <div>Download Files</div>
+      </th>
+      <th>
+        <div>Status</div>
+      </th>
+      <th>
+        <div>Approved By</div>
+      </th>
+     </thead>
+  <tbody>  
+    
+    
+<% obj.each do |transaction| %> 
+  <tr>
+      <td>
+        <div><%= link_to transaction.title, transaction_path(transaction) %></div>
+      </td>
+      <td>
+        <div><%= transaction.price %></div>
+      </td>
+      <td>
+        <div><%= transaction.description %></div>
+      </td>
+      <td>
+        <div><%= transaction.user.username %></div>
+      </td>
+     
+      <td>
+        <div> 
         <% if logged_in? && (current_user == transaction.user || current_user.admin?) %>
           
              <%= link_to "Edit this Transaction", edit_transaction_path(transaction), class: "btn btn-xs btn-primary" %>
             <%= link_to "Delete this Transaction", transaction_path(transaction), method: :delete, 
                                           data: { confirm: "Are you sure you want to delete the Transaction?"}, 
-                                          class: "btn btn-xs btn-danger" %> 
+                                          class: "btn btn-xs btn-danger" %>
+        <% end %></div>
+      </td>  
+      <td>
+        <div><%= link_to 'Download file', transaction.image.url %></div>
+      </td>
+       <td>
+        <div><%= link_to 'Download file', transaction.document.url %></div>
+      </td>
+      <td>
+        <div style="color:red"><%= transaction.status %></div>
+      </td>
+      <td>
+        <div style="color:blue"><%= transaction.approvedby %></div>
+      </td>
 
-          <% end %>
-         </td>
-          
-        
-</tr>
-</table>      
-<% end %>
+           
+   </tr>
+
+ <% end %>
+ </tbody>
+ </table>
+
+     
+ 
+  
+
+
+
+
+
+
+
+

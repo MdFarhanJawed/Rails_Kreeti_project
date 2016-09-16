@@ -12,6 +12,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'sass-rails', '~> 5.0'
 gem 'quiet_assets', group: :development
+gem "paperclip", "~> 5.0.0"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
