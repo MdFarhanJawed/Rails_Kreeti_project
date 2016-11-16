@@ -11,33 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916141226) do
+ActiveRecord::Schema.define(version: 20161108090858) do
 
   create_table "accounts", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 25, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-  end
-
-  create_table "article_categories", force: :cascade do |t|
-    t.integer "article_id"
-    t.integer "category_id"
-  end
-
-  create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
+    t.string   "title",                 limit: 20,  null: false
+    t.string   "description",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.text     "price"
+    t.text     "price",                             null: false
     t.string   "accountname"
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -48,16 +37,17 @@ ActiveRecord::Schema.define(version: 20160916141226) do
     t.integer  "document_file_size"
     t.datetime "document_updated_at"
     t.string   "status"
-    t.string   "approvedby"
+    t.integer  "approved_by"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "email"
+    t.string   "username",        limit: 255,                 null: false
+    t.string   "email",           limit: 30,                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
-    t.boolean  "admin",           default: false
+    t.string   "password_digest",                             null: false
+    t.boolean  "admin",                       default: false
+    t.string   "name",            limit: 20
   end
 
 end

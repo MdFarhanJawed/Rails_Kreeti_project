@@ -4,9 +4,8 @@ class Transaction < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   belongs_to :user
-  has_many :accounts, through: :account_articles
   validates :title, presence: true, length: { minimum: 3, maximum: 50 }
   validates :description, presence: true, length: { minimum: 10, maximum: 300 }
   validates :user_id, presence: true
-  validates :price,presence: true
+  validates :price,numericality: true, presence: true
 end

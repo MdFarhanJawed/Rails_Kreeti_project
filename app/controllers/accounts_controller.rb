@@ -44,7 +44,7 @@ def destroy
     @account.destroy
     flash[:danger] = "account was successfully deleted"
     redirect_to accounts_path
-  end
+end
 
 def user_must
  if !logged_in?
@@ -52,7 +52,7 @@ def user_must
  	redirect_to accounts_path
  end
 
- end
+end
 
 
 private
