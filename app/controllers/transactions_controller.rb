@@ -8,6 +8,7 @@ class TransactionsController < ApplicationController
     @search=Transaction.all.paginate(page: params[:page], per_page: 5).search(params[:q])
     @transactions=@search.result
     
+    
   end
   
   def new
