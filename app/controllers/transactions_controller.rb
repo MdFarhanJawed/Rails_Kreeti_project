@@ -7,6 +7,16 @@ class TransactionsController < ApplicationController
     
     @search=Transaction.all.paginate(page: params[:page], per_page: 5).search(params[:q])
     @transactions=@search.result
+    if @transaction!=nil
+     @totalvalue = 0
+     @transaction.each do |activity|
+      activity.each do |transaction|
+        @totalvalue = @totalvalue + transaction.price
+      end
+    end
+    end
+        
+    
     
   end
   
@@ -45,6 +55,8 @@ class TransactionsController < ApplicationController
     flash[:danger] = "Transaction was successfully deleted"
     redirect_to transactions_path
   end
+
+  
   
   private
     def set_transaction
@@ -52,7 +64,7 @@ class TransactionsController < ApplicationController
     end
   
     def transaction_params
-      params.require(:transaction).permit(:title, :description, :price,:accountname,:image,:document,:status,:approvedby)
+      params.require(:transaction).permit(:title, :description, :price,:accountname,:image,:document,:status,:approved_by,:approve)
     end
   
     def require_same_user

@@ -1,0 +1,39 @@
+<h1>Transaction <span>Detail</span> Of <span>User</span></h1>
+<table class="responstable">  
+  <tr>    
+    <th data-th="Driver details">    
+    <span>Title</span></th>
+    <th>Expenses</th>
+    <th>Description</th>
+    <th>Created BY</th>
+    <th>Edit and Delete</th>
+    <th>Download Image</th>
+    <th>Download Files</th>
+    <th>Status</th>
+    <th>Approved By</th>
+  </tr>
+  <% total=0%>
+  <% obj.each do |transaction| %> 
+  <tr>    
+    <% total=total+transaction.price %>
+    <td><%= link_to transaction.title, transaction_path(transaction) %></td>
+    <td><%= transaction.price %></td>
+    <td><%= transaction.description %></td>
+    <td><%= transaction.user.username %></td> 
+    <td><% if logged_in? && (current_user == transaction.user || current_user.admin?) %>                      <%= link_to "Edit this Transaction", edit_transaction_path(transaction), class: "btn btn-xs btn-primary" %>
+      <%= link_to "Delete this Transaction", transaction_path(transaction), method: :delete, 
+       data: { confirm: "Are you sure you want to delete the Transaction?"}, 
+       class: "btn btn-xs btn-danger" %>
+     <% end %></td>
+    <td> <%= link_to 'Download Image', transaction.image.url,:download => 'filename' %></td>  
+    <td><%= link_to 'Download file', transaction.document.url,:download => 'filename' %></td>    
+    <td> <div style="color:red"><%= transaction.status %></td> 
+    <% if transaction.approved_by==nil %>
+    <td></td>
+    <% else %>
+    <td><div style="color:blue"><%= User.find(transaction.approved_by).username%></td>
+    <%end%>
+  </tr>
+  <%end%>
+</table>
+<h2>Total&nbsp <%= total %></h1>

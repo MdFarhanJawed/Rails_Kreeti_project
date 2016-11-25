@@ -20,16 +20,14 @@
   <hr>
   <p style="display:inline-block;float:left;color:blue">Title:&nbsp</p><%= @transaction.description %><br/>
   <p style="display:inline-block;float:left;color:blue">Price:&nbsp</p><%= @transaction.price %>
-  <p style="padding-left:20px"><%= image_tag @transaction.image.url(:medium)%></p>
-  
-  
+  <p style="padding-left:20px"><%= image_tag @transaction.image.url(:medium)%></p> 
   <div class="transaction-actions">
     <% if logged_in? && (current_user == @transaction.user || current_user.admin?) %>
       <%= link_to "Edit this Transaction", edit_transaction_path(@transaction), class: "btn btn-xs btn-primary" %>
       <%= link_to "Delete this Transaction", transaction_path(@transaction), method: :delete, 
-                                        data: { confirm: "Are you sure you want to delete the transaction?"}, 
-                                        class: "btn btn-xs btn-danger" %>
+        data: { confirm: "Are you sure you want to delete the transaction?"}, 
+        class: "btn btn-xs btn-danger" %>
     <% end %>
-    <%= link_to "View all Transaction", transactions_path, class: "btn btn-xs btn-success" %>
+     <%= link_to "View all Transaction", transactions_path, class: "btn btn-xs btn-success" %>
   </div>
 </div>

@@ -1,0 +1,18 @@
+<table class="responstable">
+  <tr>
+    <th data-th="Driver details"><span>Product Name</span></th>
+    <th>Time</th>
+    <th>Edit and Delete</th>
+  </tr>
+  <% obj.each do |account| %> 
+  <tr>
+    <td><%= link_to account.name, account_path(account) %></td>
+    <td>Created At <%= time_ago_in_words(account.created_at) %> ago,
+        last updated: <%= time_ago_in_words(account.updated_at) %></td>
+    <td><% if logged_in? && (current_user == account.user || current_user.admin?) %>                          <%= link_to "Edit this account", edit_account_path(account), class: "btn btn-xs btn-primary" %>
+       <%= link_to "Delete this account", account_path(account), method: :delete, 
+       data: { confirm: "Are you sure you want to delete the account?"}, 
+       class: "btn btn-xs btn-danger" %> <% end %></td>
+  </tr>
+  <%end%>
+</table>
