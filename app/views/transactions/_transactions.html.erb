@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 45e0b4f1cd20e1d3236c9b7ebce65b5e1ee4ffb3
 <h1>Transaction <span>Detail</span> Of <span>User</span></h1>
 <table class="responstable">  
   <tr>    
@@ -12,10 +16,15 @@
     <th>Status</th>
     <th>Approved By</th>
   </tr>
+<<<<<<< HEAD
   <% total=0%>
   <% obj.each do |transaction| %> 
   <tr>    
     <% total=total+transaction.price %>
+=======
+  <% obj.each do |transaction| %> 
+  <tr>    
+>>>>>>> 45e0b4f1cd20e1d3236c9b7ebce65b5e1ee4ffb3
     <td><%= link_to transaction.title, transaction_path(transaction) %></td>
     <td><%= transaction.price %></td>
     <td><%= transaction.description %></td>
@@ -36,4 +45,7 @@
   </tr>
   <%end%>
 </table>
+<<<<<<< HEAD
 <h2>Total&nbsp <%= total %></h1>
+=======
+>>>>>>> 45e0b4f1cd20e1d3236c9b7ebce65b5e1ee4ffb3

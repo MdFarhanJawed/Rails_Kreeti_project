@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161124084046) do
+=======
+ActiveRecord::Schema.define(version: 20161108090858) do
+>>>>>>> 45e0b4f1cd20e1d3236c9b7ebce65b5e1ee4ffb3
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name",       limit: 25, null: false
@@ -26,7 +30,11 @@ ActiveRecord::Schema.define(version: 20161124084046) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+<<<<<<< HEAD
     t.integer  "price",                             null: false
+=======
+    t.text     "price",                             null: false
+>>>>>>> 45e0b4f1cd20e1d3236c9b7ebce65b5e1ee4ffb3
     t.string   "accountname"
     t.string   "image_file_name"
     t.string   "image_content_type"

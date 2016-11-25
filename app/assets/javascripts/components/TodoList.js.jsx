@@ -15,7 +15,18 @@ const TodoList=React.createClass({
             {this.props.transaction.map((transaction, i) => <TableRow key = {i} data = {transaction} />)}
             <tr>
             <td colSpan="2">Total</td>
+<<<<<<< HEAD
             <td> </td>
+=======
+            <td>
+            {
+              
+              this.props.transaction.(function(trans) {
+                return sum + trans.price;
+              })
+            }
+            </td>
+>>>>>>> 45e0b4f1cd20e1d3236c9b7ebce65b5e1ee4ffb3
             </tr>
           </tbody>
         </table>
@@ -25,7 +36,11 @@ const TodoList=React.createClass({
 });
 
 class TableRow extends React.Component{
+<<<<<<< HEAD
    constructor() {
+=======
+	 constructor() {
+>>>>>>> 45e0b4f1cd20e1d3236c9b7ebce65b5e1ee4ffb3
      super();
      this.state = {
      
